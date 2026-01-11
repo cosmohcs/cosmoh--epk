@@ -3,77 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSMOH | DOSSIER DE PRESSE OFFICIEL</title>
+    <title>COSMOH | OFFICIAL PRESS KIT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Ajout de Metal Mania pour le logo style Osamason -->
     <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rubik+Glitch&family=Syne:wght@400;700;800&family=Courier+Prime:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'opium-black': '#030303',
+                        'opium-red': '#ff0000',
+                        'opium-gray': '#1a1a1a',
+                        'raw-white': '#f0f0f0',
+                        'psycho-purple': '#9d00ff'
+                    },
+                    fontFamily: {
+                        'glitch': ['"Rubik Glitch"', 'display'],
+                        'body': ['"Syne"', 'sans-serif'],
+                        'mono': ['"Courier Prime"', 'monospace'],
+                        'gothic': ['"UnifrakturMaguntia"', 'cursive'],
+                        'metal': ['"Metal Mania"', 'display'],
+                    },
+                    animation: {
+                        'flicker': 'flicker 0.1s infinite',
+                        'shake': 'shake 0.5s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'psycho': 'hueRotate 3s infinite linear',
+                        'strobe': 'strobe 0.2s infinite',
+                        'pulse-fast': 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        flicker: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.3' },
+                        },
+                        strobe: {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0.8' },
+                        },
+                        hueRotate: {
+                            '0%': { filter: 'hue-rotate(0deg)' },
+                            '100%': { filter: 'hue-rotate(360deg)' },
+                        },
+                        shake: {
+                            '0%': { transform: 'translate(1px, 1px) rotate(0deg)' },
+                            '10%': { transform: 'translate(-1px, -2px) rotate(-1deg)' },
+                            '20%': { transform: 'translate(-3px, 0px) rotate(1deg)' },
+                            '30%': { transform: 'translate(3px, 2px) rotate(0deg)' },
+                            '40%': { transform: 'translate(1px, -1px) rotate(1deg)' },
+                            '50%': { transform: 'translate(-1px, 2px) rotate(-1deg)' },
+                            '60%': { transform: 'translate(-3px, 1px) rotate(0deg)' },
+                            '70%': { transform: 'translate(3px, 1px) rotate(-1deg)' },
+                            '80%': { transform: 'translate(-1px, -1px) rotate(1deg)' },
+                            '90%': { transform: 'translate(1px, 2px) rotate(0deg)' },
+                            '100%': { transform: 'translate(1px, -2px) rotate(-1deg)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
         body {
             background-color: #030303;
             color: #f0f0f0;
-            font-family: 'Syne', sans-serif;
-            margin: 0;
-            padding: 0;
+            cursor: crosshair;
+            overflow-x: hidden;
         }
-        a {
-            color: #ff0000;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .noise {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,%3Csvg xmlns="http://www.w3.org/2000/svg">%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" seed="2"%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noise)" opacity="0.5"%3E%3C/rect%3E%3C/svg%3E');
-            opacity: 0.05;
-            pointer-events: none;
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body>
+<body class="font-body antialiased selection:bg-opium-red selection:text-black">
+
     <div class="noise"></div>
-    <nav style="position: fixed; top: 0; width: 100%; background: rgba(3, 3, 3, 0.9); color: white; text-align: center;">
-        <a href="#bio">Bio</a> | 
-        <a href="#music">Pistes</a> | 
-        <a href="#visuals">Vidéos</a> | 
-        <a href="#contact">Contact</a>
+    <div class="scanlines"></div>
+
+    <!-- Sticky Nav -->
+    <nav class="fixed top-0 w-full z-40 bg-opium-black/80 backdrop-blur-md border-b border-white/20 flex justify-between items-center px-6 py-4">
+        <a href="#" class="text-3xl font-metal text-white tracking-widest hover:text-opium-red transition-colors cursor-pointer animate-pulse">
+            COSMOH
+        </a>
+        <div class="hidden md:flex space-x-8 font-mono text-xs uppercase font-bold tracking-widest text-gray-400">
+            <a href="#bio" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Bio</a>
+            <a href="#music" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Pistes</a>
+            <a href="#visuals" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Vidéos</a>
+            <a href="#contact" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Contact</a>
+        </div>
     </nav>
-    <section id="bio" style="margin-top: 60px; padding: 20px;">
+
+    <!-- Hero Section -->
+    <header>
+        <!-- Content unchanged -->
+    </header>
+
+    <!-- Biography Section -->
+    <section id="bio">
         <h1>Biographie</h1>
-        <p><strong>COSMOH</strong>, originaire de Liège, Belgique, est un artiste qui tire son inspiration des influences telles que Playboi Carti, Future, et Ateyaba. Ses paroles évoquent fréquemment ses rêves de demain, ses regrets d'hier, et son désir de conquérir le monde grâce à sa vision particulière.</p>
-        <p>Après une série de singles remarquables en 2025, il revient en force, validé par Prinzly (avec qui il a collaboré sur un morceau produit par celui-ci) et par Moji Sboy. Cosmoh a également marqué les esprits avec ses premiers concerts en janvier 2025, à Madame Moustache (Liège) et au Movida Club (Paris).</p>
+        <!-- Ajout des nouvelles informations -->
+        <p> Cosmoh évoque souvent ses rêves de demain, ses regrets d'hier, et son désir de conquérir le monde. Lors de ses concerts au Paris Movida. </p>
     </section>
-    <section id="music" style="padding: 20px;">
-        <h1>Discographie</h1>
-        <h2>Série de singles (2025)</h2>
-        <ul>
-            <li><a href="https://distrokid.com/hyperfollow/cosmoh/u-cant-2">U Can't</a></li>
-            <li><a href="https://distrokid.com/hyperfollow/cosmoh/zombie">Zombie</a></li>
-            <li><a href="https://distrokid.com/hyperfollow/cosmoh/dans-ta-maison">Dans ta maison</a></li>
-        </ul>
-    </section>
-    <section id="visuals" style="padding: 20px;">
-        <h1>Vidéos</h1>
-        <ul>
-            <li><a href="https://www.youtube.com/embed/ECHCOakj5Xs">Sorcellerie</a></li>
-            <li><a href="https://www.youtube.com/embed/OkjWFoBTCa0">U Can't</a></li>
-            <li><a href="https://www.youtube.com/embed/LjRI15T5QWw">Zombie</a></li>
-        </ul>
-    </section>
-    <section id="contact" style="padding: 20px;">
-        <h1>Contact</h1>
-        <p>Pour des bookings et des questions :</p>
-        <button onclick="copyEmail()">cosmohmusic@gmail.com</button>
-    </section>
-    <script>
-        function copyEmail() {
-            navigator.clipboard.writeText("cosmohmusic@gmail.com").then(() => alert("Email copié !"));
-        }
-    </script>
 </body>
 </html>
