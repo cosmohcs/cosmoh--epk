@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSMOH | OFFICIAL PRESS KIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Ajout de Metal Mania pour le logo style Osamason -->
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rubik+Glitch&family=Syne:wght@400;700;800&family=Courier+Prime:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'opium-black': '#030303',
+                        'opium-red': '#ff0000',
+                        'opium-gray': '#1a1a1a',
+                        'raw-white': '#f0f0f0',
+                        'psycho-purple': '#9d00ff'
+                    },
+                    fontFamily: {
+                        'glitch': ['"Rubik Glitch"', 'display'],
+                        'body': ['"Syne"', 'sans-serif'],
+                        'mono': ['"Courier Prime"', 'monospace'],
+                        'gothic': ['"UnifrakturMaguntia"', 'cursive'],
+                        'metal': ['"Metal Mania"', 'display'],
+                    },
+                    animation: {
+                        'flicker': 'flicker 0.1s infinite',
+                        'shake': 'shake 0.5s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'psycho': 'hueRotate 3s infinite linear',
+                        'strobe': 'strobe 0.2s infinite',
+                        'pulse-fast': 'pulse 0.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        flicker: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.3' },
+                        },
+                        strobe: {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0.8' },
+                        },
+                        hueRotate: {
+                            '0%': { filter: 'hue-rotate(0deg)' },
+                            '100%': { filter: 'hue-rotate(360deg)' },
+                        },
+                        shake: {
+                            '0%': { transform: 'translate(1px, 1px) rotate(0deg)' },
+                            '10%': { transform: 'translate(-1px, -2px) rotate(-1deg)' },
+                            '20%': { transform: 'translate(-3px, 0px) rotate(1deg)' },
+                            '30%': { transform: 'translate(3px, 2px) rotate(0deg)' },
+                            '40%': { transform: 'translate(1px, -1px) rotate(1deg)' },
+                            '50%': { transform: 'translate(-1px, 2px) rotate(-1deg)' },
+                            '60%': { transform: 'translate(-3px, 1px) rotate(0deg)' },
+                            '70%': { transform: 'translate(3px, 1px) rotate(-1deg)' },
+                            '80%': { transform: 'translate(-1px, -1px) rotate(1deg)' },
+                            '90%': { transform: 'translate(1px, 2px) rotate(0deg)' },
+                            '100%': { transform: 'translate(1px, -2px) rotate(-1deg)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #030303;
+            color: #f0f0f0;
+            cursor: crosshair;
+            overflow-x: hidden;
+        }
+
+        /* CRT Scanline Effect */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.2) 50%,
+                rgba(0,0,0,0.2)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 55;
+            opacity: 0.6;
+        }
+        
+        /* Noise Overlay with Psychedelic Touch */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.15;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="1"/%3E%3C/svg%3E');
+        }
+
+        /* Brutalist Hard Shadow Box */
+        .hard-box {
+            background: #111;
+            border: 1px solid #333;
+            box-shadow: 6px 6px 0px #ff0000;
+            transition: all 0.2s ease;
+        }
+        .hard-box:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 10px 10px 0px #00ff00; /* Green shadow on hover for psycho feel */
+            background: #000;
+            border-color: #fff;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: #ff00ff; /* Pink selection */
+            color: #fff;
+        }
+
+        /* Image Distortions */
+        .distort-img {
+            filter: contrast(130%) grayscale(100%) brightness(0.8);
+            transition: all 0.1s steps(2);
+        }
+        .distort-img:hover {
+            filter: contrast(150%) grayscale(0%) invert(100%) hue-rotate(90deg);
+            transform: scale(1.05);
+        }
+
+        .glitch-text:hover {
+            animation: shake 0.3s infinite, hueRotate 0.5s infinite;
+            color: #ff0000;
+        }
+
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.5);
+            color: transparent;
+        }
+
+        /* Rainbow border animation */
+        .psycho-border {
+            border: 1px solid white;
+            animation: psycho 4s infinite linear;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-body antialiased selection:bg-opium-red selection:text-black">
+
+    <div class="noise"></div>
+    <div class="scanlines"></div>
+
+    <!-- Sticky Nav -->
+    <nav class="fixed top-0 w-full z-40 bg-opium-black/80 backdrop-blur-md border-b border-white/20 flex justify-between items-center px-6 py-4">
+        <a href="#" class="text-3xl font-metal text-white tracking-widest hover:text-opium-red transition-colors cursor-pointer animate-pulse">
+            COSMOH
+        </a>
+        <div class="hidden md:flex space-x-8 font-mono text-xs uppercase font-bold tracking-widest text-gray-400">
+            <a href="#bio" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Bio</a>
+            <a href="#music" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Tracks</a>
+            <a href="#visuals" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Visuals</a>
+            <a href="#contact" class="hover:text-white hover:bg-opium-red px-2 py-1 transition-all hover:animate-shake">Contact</a>
+        </div>
+        <div class="md:hidden text-white border border-white p-2">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center p-6 pt-20 border-b border-white/10 overflow-hidden">
+        
+        <!-- Flashy Background Element -->
+        <div class="absolute inset-0 z-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+        <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-black to-black animate-pulse"></div>
+
+        <!-- Floating Stickers / Background Chaos -->
+        <div class="absolute top-1/3 left-10 md:left-20 animate-float opacity-80 z-0 hover:animate-spin cursor-help">
+            <div class="border border-white p-2 font-mono text-xs text-opium-red rotate-[-12deg] bg-black hover:bg-white hover:text-black transition-colors">
+                ★ PSYCHO_MODE ★
+            </div>
+        </div>
+        <div class="absolute bottom-1/3 right-10 md:right-32 animate-float opacity-60 z-0" style="animation-delay: 1s;">
+            <div class="border-2 border-opium-red p-4 rounded-full w-24 h-24 flex items-center justify-center rotate-[15deg] bg-black animate-psycho border-dashed">
+                <i class="fas fa-radiation text-4xl text-white animate-spin-slow"></i>
+            </div>
+        </div>
+        
+        <!-- Big Background Text Fading -->
+        <div class="absolute top-24 right-10 opacity-20 text-[10rem] font-metal leading-none select-none text-white mix-blend-exclusion pointer-events-none animate-flicker">
+            †
+        </div>
+
+        <div class="relative z-10 text-center flex flex-col items-center w-full max-w-7xl">
+            <div class="font-mono text-opium-red text-xs md:text-sm tracking-[1em] mb-4 bg-black px-4 py-1 border border-opium-red animate-pulse">
+                DOSSIER DE PRESSE OFFICIEL
+            </div>
+            
+            <!-- Main Title Unified - METAL FONT -->
+            <h1 class="text-[15vw] md:text-[16vw] font-metal leading-[0.8] tracking-widest text-white mix-blend-difference hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-red-500 hover:via-purple-500 hover:to-blue-500 hover:animate-psycho transition-all duration-100 select-none cursor-default scale-y-125 my-8" style="text-shadow: 0 0 10px rgba(255,0,0,0.5);">
+                COSMOH
+            </h1>
+
+
+            
+            <!-- Quick Link Buttons (Brutalist Style) -->
+            <div class="flex gap-6 flex-wrap justify-center">
+                <a href="#music" class="hard-box px-10 py-4 text-white font-bold font-mono uppercase tracking-widest text-sm relative group overflow-hidden border-2 border-white hover:animate-shake">
+                    <span class="relative z-10 group-hover:invert mix-blend-difference">Écouter maintenant</span>
+                    <div class="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-100 z-0"></div>
+                </a>
+
+                <!-- BOUTON PRESS ASSETS AJOUTÉ -->
+                <a href="https://drive.google.com/drive/folders/1qR4LZMhf00nN8ml4yJYYl40mUXrZLgQ9?usp=sharing" target="_blank" class="border border-opium-red/50 px-10 py-4 text-opium-red font-bold font-mono uppercase tracking-widest text-sm hover:bg-opium-red hover:text-black transition-all hover:scale-110 shadow-[0_0_15px_rgba(255,0,0,0.4)] flex items-center gap-2">
+                    <i class="fas fa-download"></i> Assets
+                </a>
+
+                <a href="#contact" class="border border-white/50 px-10 py-4 text-white font-bold font-mono uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all hover:scale-105">
+                    Contact
+                </a>
+            </div>
+        </div>
+
+        <!-- Scrolling Marquee - Psycho Mode -->
+        <div class="absolute bottom-12 w-full overflow-hidden whitespace-nowrap border-y border-white bg-black text-opium-red py-1 rotate-1 scale-105 shadow-[0_0_20px_rgba(255,0,0,0.8)] hover:bg-white hover:text-black transition-colors">
+            <div class="inline-block animate-[scroll_5s_linear_infinite] text-3xl font-metal tracking-widest">
+                COSMOH ★ SORCELLERIE ★ LMP ★ ZOMBIE ★ U CAN'T ★ COSMOH ★ DANS TA MAISON ★ LMP ★ ZOMBIE ★ U CAN'T ★
+            </div>
+        </div>
+    </header>
+
+    <!-- Biography Section -->
+    <section id="bio" class="py-24 px-6 md:px-20 border-b border-white/10 bg-opium-black relative overflow-hidden">
+        <!-- Background Texture -->
+        <div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none animate-pulse" 
+             style="background-image: repeating-linear-gradient(45deg, #ff0000 0, #ff0000 1px, transparent 0, transparent 50%); background-size: 30px 30px;">
+        </div>
+
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center relative z-10">
+            
+            <!-- Image Area - Tape Style -->
+            <div class="relative group mx-auto md:mx-0 w-full max-w-md">
+                <!-- Tape effect -->
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-8 bg-opium-red rotate-[-2deg] z-20 shadow-[0_0_10px_red] animate-pulse"></div>
+                
+                <div class="relative w-full aspect-[4/5] bg-neutral-900 border-2 border-white p-2 transform rotate-1 group-hover:rotate-0 transition-transform duration-300 shadow-[8px_8px_0px_#333] group-hover:shadow-[8px_8px_0px_#ff0000]">
+                    <img src="images/cosmoh.jpg.jpg" alt="COSMOH" class="w-full h-full object-cover distort-img overflow-hidden relative group-hover:animate-psycho">
+                </div>
+            </div>
+
+            <!-- Text Content -->
+            <div>
+                <h2 class="text-6xl font-metal mb-8 text-white relative inline-block">
+                    <span class="absolute -inset-1 bg-opium-red blur opacity-20 animate-pulse"></span>
+                    <span class="relative">ORIGINES</span>
+                </h2>
+                <div class="font-mono text-gray-300 space-y-6 text-sm md:text-base leading-relaxed text-justify border-l-4 border-opium-red pl-6 hover:border-white transition-colors">
+                    <p>
+                        <strong class="text-white bg-opium-red px-1 text-black">COSMOH</strong> originaire de Liège en Belgique, est le produit direct du chaos. Né de l'explosion SoundCloud 2016, il a transformé l'énergie brute de <span class="underline decoration-wavy decoration-opium-red">Playboi Carti</span> et l'esthétique sombre d'Atlanta en une arme sonore personnelle.
+                    </p>
+                    <p>
+                        Ses débuts : des freestyles sales à 15 ans et des sessions studio improvisées. À 19 ans, il s'enferme. Sa chambre devient un bunker, FL Studio son seul exutoire. Pas de promo, pas de DA polie, juste du son brut.
+                    </p>
+                    <p>
+                        2024 a marqué la naissance avec <span class="italic text-opium-red font-bold">"C-Society"</span>. 2026 est l'année de l'explosion. Avec "Sorcellerie", Cosmoh ne cherche pas à plaire, il cherche à traumatiser les enceintes.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Artistic Vision Section -->
+    <section id="vision" class="py-24 px-6 border-b border-white/10 bg-neutral-900 relative">
+        <!-- Floating X symbols blinking -->
+        <div class="absolute top-10 left-10 text-6xl font-sans font-bold text-red-500/20 select-none pointer-events-none animate-pulse">X</div>
+        <div class="absolute bottom-10 right-10 text-6xl font-sans font-bold text-red-500/20 select-none pointer-events-none animate-pulse" style="animation-delay: 0.5s">X</div>
+
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-block border-2 border-opium-red p-3 mb-8 animate-spin-slow hover:animate-spin">
+                <i class="fas fa-eye text-opium-red text-4xl"></i>
+            </div>
+            
+            <h2 class="text-5xl md:text-8xl font-metal mb-8 uppercase tracking-widest leading-none text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800">
+                IMMERSION <br><span class="outline-text italic text-white/20 animate-pulse">TOTALE</span>
+            </h2>
+            
+            <div class="hard-box p-8 md:p-16 relative mt-12 text-left bg-[#080808] border-dashed border-2 border-gray-700 hover:border-opium-red">
+                <!-- Corner Decorations -->
+                <i class="fas fa-plus absolute top-4 left-4 text-opium-red animate-spin"></i>
+                <i class="fas fa-plus absolute top-4 right-4 text-opium-red animate-spin"></i>
+                <i class="fas fa-plus absolute bottom-4 left-4 text-opium-red animate-spin"></i>
+                <i class="fas fa-plus absolute bottom-4 right-4 text-opium-red animate-spin"></i>
+
+                <p class="text-gray-300 font-mono text-lg md:text-xl leading-relaxed">
+                    <span class="text-5xl float-left mr-4 mt-[-10px] font-metal text-opium-red">L</span>a vision de Cosmoh est sombre et hypnotique. Il mélange des mélodies accrocheuses avec une ambiance mystérieuse et cinématographique. Cosmoh utilise sa voix comme un instrument de musique, la plaçant au cœur de son son unique.
+                    <br><br>
+                    Le but n'est pas juste d'écouter, mais d'être complètement <span class="bg-opium-red text-black font-bold px-2 hover:bg-white transition-colors cursor-help">immergé</span> dans son univers sonore.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discography Section -->
+    <section id="music" class="py-24 px-6 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b-2 border-white pb-4">
+                <h2 class="text-6xl md:text-8xl font-metal tracking-widest text-white hover:text-opium-red transition-colors duration-500">CATALOGUE</h2>
+                <span class="font-mono bg-white text-black px-2 py-1 text-sm font-bold mt-4 md:mt-0 animate-pulse">/// DATABASE_ACCESS_GRANTED</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                
+                <!-- Featured EP (Large) -->
+                <a href="https://distrokid.com/hyperfollow/cosmoh/c-society-2" target="_blank" class="col-span-1 md:col-span-8 bg-[#0a0a0a] border border-gray-800 p-8 relative group overflow-hidden hover:border-opium-red transition-colors block cursor-pointer">
+                    <div class="absolute top-0 right-0 bg-opium-red text-black font-mono text-xs px-3 py-1 font-bold z-20">PROJECT</div>
+                    <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
+                        <div class="w-64 h-64 rounded-full bg-gray-800 border-2 border-white/20 group-hover:border-opium-red transition-colors flex items-center justify-center shadow-2xl relative overflow-hidden">
+                             <div class="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-blue-500/20 animate-psycho opacity-0 group-hover:opacity-100 transition-opacity z-20 rounded-full"></div>
+                             <!-- CD shine effect -->
+                             <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.15),transparent_50%)] z-20 rounded-full"></div>
+                             <img src="images/C-SOCIETY.jpg" alt="C-Society" class="w-full h-full object-cover rounded-full">
+                             <!-- CD center hole -->
+                             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gray-900 rounded-full border-2 border-gray-700 z-30 shadow-xl"></div>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-5xl font-bold uppercase mb-2 font-metal text-white group-hover:text-opium-red transition-colors">C-Society</h3>
+                            <p class="font-mono text-opium-red text-sm mb-6 bg-black inline-block px-2">EP • 4 TITRES • FEV 2024</p>
+                            <p class="text-gray-400 font-mono text-sm leading-relaxed border-l-2 border-gray-700 pl-4">
+                                Le projet fondateur. Une exploration brute des premières sonorités. Pas de compromis, juste la genèse du style Cosmoh.
+                            </p>
+                            <span class="mt-4 inline-block text-xs font-mono uppercase text-white border-b border-white group-hover:text-opium-red group-hover:border-opium-red">Ecouter <i class="fas fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Latest Single (Vertical) -->
+                <div class="col-span-1 md:col-span-4 bg-opium-red p-1 relative flex flex-col group hover:animate-shake">
+                    <div class="bg-black h-full p-6 flex flex-col items-center justify-between border border-black group-hover:bg-opium-red group-hover:text-black transition-colors">
+                        <div class="w-full text-right font-mono text-xs font-bold animate-flicker">DERNIERE SORTIE</div>
+                        <div class="text-center my-8">
+                            <img src="images/cover sorcellerie.jpeg" alt="Sorcellerie" class="w-24 h-24 mx-auto object-cover rounded-lg mb-4 shadow-lg">
+                            <h3 class="text-4xl font-bold uppercase leading-none font-metal">Sorcellerie</h3>
+                        </div>
+                        <div class="w-full text-center border-t border-current pt-4 font-mono text-sm">JAN 2026</div>
+                    </div>
+                </div>
+
+                <!-- Track List (Grid style) -->
+                <div class="col-span-1 md:col-span-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                    <!-- Track Item: U Can't -->
+                    <a href="https://distrokid.com/hyperfollow/cosmoh/u-cant-2" target="_blank" class="bg-[#111] border border-gray-800 p-4 hover:border-opium-red hover:bg-black transition-all group cursor-pointer relative overflow-hidden block">
+                        <div class="absolute inset-0 bg-red-900/10 transform translate-x-[-100%] group-hover:translate-x-0 transition-transform z-0"></div>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-gray-500 font-mono text-xs">10/25</span>
+                                <i class="fab fa-spotify text-xl text-white opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold uppercase group-hover:text-opium-red font-metal tracking-wide">U Can't</h4>
+                        </div>
+                    </a>
+
+                    <!-- Track Item: Zombie -->
+                    <a href="https://distrokid.com/hyperfollow/cosmoh/zombie" target="_blank" class="bg-[#111] border border-gray-800 p-4 hover:border-opium-red hover:bg-black transition-all group cursor-pointer relative overflow-hidden block">
+                        <div class="absolute inset-0 bg-red-900/10 transform translate-x-[-100%] group-hover:translate-x-0 transition-transform z-0"></div>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-gray-500 font-mono text-xs">05/25</span>
+                                <i class="fab fa-spotify text-xl text-white opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold uppercase group-hover:text-opium-red font-metal tracking-wide">Zombie</h4>
+                        </div>
+                    </a>
+
+                    <!-- Track Item: Dans ta maison -->
+                    <a href="https://distrokid.com/hyperfollow/cosmoh/dans-ta-maison" target="_blank" class="bg-[#111] border border-gray-800 p-4 hover:border-opium-red hover:bg-black transition-all group cursor-pointer relative overflow-hidden block">
+                         <div class="absolute inset-0 bg-red-900/10 transform translate-x-[-100%] group-hover:translate-x-0 transition-transform z-0"></div>
+                         <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-gray-500 font-mono text-xs">04/25</span>
+                                <i class="fab fa-spotify text-xl text-white opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold uppercase group-hover:text-opium-red font-metal tracking-wide">Dans ta maison</h4>
+                        </div>
+                    </a>
+
+                    <!-- Track Item: Blicky -->
+                    <a href="https://distrokid.com/hyperfollow/cosmoh/blicky" target="_blank" class="bg-[#111] border border-gray-800 p-4 hover:border-opium-red hover:bg-black transition-all group cursor-pointer relative overflow-hidden block">
+                         <div class="absolute inset-0 bg-red-900/10 transform translate-x-[-100%] group-hover:translate-x-0 transition-transform z-0"></div>
+                         <div class="relative z-10">
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-gray-500 font-mono text-xs">01/25</span>
+                                <i class="fab fa-spotify text-xl text-white opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold uppercase group-hover:text-opium-red font-metal tracking-wide">Blicky</h4>
+                        </div>
+                    </a>
+
+                    <div class="bg-[#111] border border-gray-800 p-4 hover:border-white transition-all opacity-60 hover:opacity-100">
+                        <h4 class="text-xl font-bold uppercase text-gray-400 font-metal">Valet</h4>
+                        <span class="text-xs font-mono text-gray-600">2024</span>
+                    </div>
+                    <div class="bg-[#111] border border-gray-800 p-4 hover:border-white transition-all opacity-60 hover:opacity-100">
+                        <h4 class="text-xl font-bold uppercase text-gray-400 font-metal">Rasmus</h4>
+                        <span class="text-xs font-mono text-gray-600">2023</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUALS SECTION (VIDEOS) -->
+    <section id="visuals" class="py-24 px-6 border-y border-white/10 bg-[#050505] relative overflow-hidden">
+         <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-black via-opium-red to-black animate-pulse"></div>
+         
+         <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl md:text-7xl font-metal mb-12 text-center uppercase text-white mix-blend-difference hover:text-opium-red transition-colors">
+                VISUALS
+            </h2>
+
+            <!-- Main Feature Video: Sorcellerie -->
+            <div class="relative w-full aspect-video border-2 border-opium-red bg-black shadow-[0_0_30px_rgba(255,0,0,0.3)] group mb-12">
+                <div class="absolute top-0 left-0 bg-opium-red text-black font-mono font-bold px-3 py-1 z-20">SORCELLERIE</div>
+                <!-- Glitch overlay on hover -->
+                <div class="absolute inset-0 bg-opium-red opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none z-10"></div>
+                
+                <iframe class="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                        src="https://www.youtube.com/embed/ECHCOakj5Xs" 
+                        title="COSMOH - SORCELLERIE" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                </iframe>
+                
+                <!-- Decorative Corner -->
+                <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-4 border-r-4 border-white bg-transparent z-30"></div>
+            </div>
+
+            <!-- Main Feature Video: U Can't -->
+            <div class="relative w-full aspect-video border-2 border-opium-red bg-black shadow-[0_0_30px_rgba(255,0,0,0.3)] group mb-12">
+                <div class="absolute top-0 left-0 bg-opium-red text-black font-mono font-bold px-3 py-1 z-20">U CAN'T</div>
+                <!-- Glitch overlay on hover -->
+                <div class="absolute inset-0 bg-opium-red opacity-0 group-hover:opacity-10 transition-opacity pointer-events-none z-10"></div>
+                
+                <iframe class="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                        src="https://www.youtube.com/embed/OkjWFoBTCa0" 
+                        title="COSMOH - U CAN'T" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                </iframe>
+                
+                <!-- Decorative Corner -->
+                <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-4 border-r-4 border-white bg-transparent z-30"></div>
+            </div>
+
+            <!-- Secondary Videos Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Video: Zombie -->
+                <div class="relative w-full aspect-video border border-gray-800 hover:border-white transition-colors group">
+                    <div class="absolute top-0 left-0 bg-gray-800 text-white font-mono text-xs px-2 py-1 z-20">ZOMBIE</div>
+                    <iframe class="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            src="https://www.youtube.com/embed/LjRI15T5QWw" 
+                            title="COSMOH - ZOMBIE" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Video: Dans ta maison -->
+                <div class="relative w-full aspect-video border border-gray-800 hover:border-white transition-colors group">
+                    <div class="absolute top-0 left-0 bg-gray-800 text-white font-mono text-xs px-2 py-1 z-20">DANS TA MAISON</div>
+                    <iframe class="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" 
+                            src="https://www.youtube.com/embed/UrAjLvULJqc" 
+                            title="COSMOH - DANS TA MAISON" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+         </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <section id="contact" class="py-20 relative bg-black border-t border-white/20 text-white overflow-hidden">
+        
+        <!-- Psychedelic Footer Background -->
+        <div class="absolute inset-0 opacity-20 pointer-events-none animate-psycho bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-red-900 via-black to-blue-900"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-7xl font-metal mb-6 text-opium-red" style="text-shadow: 2px 2px 0px white;">CONNECT</h2>
+                    <div class="flex flex-col gap-4 font-mono font-bold text-lg">
+                        <a href="https://www.instagram.com/cosmohcs/" target="_blank" class="hover:pl-4 hover:text-opium-red border-b border-gray-800 py-2 transition-all flex justify-between items-center group">
+                            INSTAGRAM <i class="fas fa-bolt group-hover:animate-ping text-xs"></i>
+                        </a>
+                        <a href="https://x.com/cosmohcs" target="_blank" class="hover:pl-4 hover:text-opium-red border-b border-gray-800 py-2 transition-all flex justify-between items-center group">
+                            TWITTER / X <i class="fas fa-bolt group-hover:animate-ping text-xs"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@cosmohcs" target="_blank" class="hover:pl-4 hover:text-opium-red border-b border-gray-800 py-2 transition-all flex justify-between items-center group">
+                            YOUTUBE <i class="fas fa-bolt group-hover:animate-ping text-xs"></i>
+                        </a>
+                         <a href="https://www.tiktok.com/@cosmohcs" target="_blank" class="hover:pl-4 hover:text-opium-red border-b border-gray-800 py-2 transition-all flex justify-between items-center group">
+                            TIKTOK <i class="fas fa-bolt group-hover:animate-ping text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex flex-col justify-end items-start md:items-end">
+                    <div class="bg-black text-white p-8 border-2 border-white w-full md:w-auto hover:shadow-[10px_10px_0px_#ff0000] transition-shadow duration-300">
+                        <h3 class="text-xl font-bold uppercase mb-4 text-white font-metal tracking-widest">Booking & Inquiries</h3>
+                        <p class="font-mono text-sm text-gray-400 mb-4">CONTACT DIRECT.</p>
+                        <button onclick="copyEmail()" class="w-full bg-opium-red text-black font-bold py-3 hover:bg-white hover:text-black transition-colors uppercase font-mono tracking-tighter" id="emailBtn">
+                            cosmohmusic@gmail.com
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 pt-8 border-t border-white/10 flex justify-between items-end font-mono text-xs font-bold opacity-50">
+                <p>2025 © COSMOH</p>
+                <p class="animate-pulse text-red-500">DESIGNED FOR DESTRUCTION</p>
+            </div>
+        </div>
+        
+        <!-- Big Outline Text in Background -->
+        <div class="absolute -bottom-10 left-0 w-full text-center text-[20vw] font-metal leading-none opacity-5 pointer-events-none select-none text-white animate-pulse">
+            COSMOH
+        </div>
+    </section>
+
+    <script>
+        function copyEmail() {
+            const email = "cosmohmusic@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const btn = document.getElementById('emailBtn');
+                const originalText = btn.innerText;
+                btn.innerText = "COPIED TO CLIPBOARD!";
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
