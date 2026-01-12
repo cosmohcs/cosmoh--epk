@@ -33,7 +33,7 @@
                         'shake': 'shake 0.5s infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'psycho': 'hueRotate 3s infinite linear',
-                        'scroll': 'scroll 15s linear infinite', /* Ralenti un peu pour lisibilité */
+                        'scroll': 'scroll 20s linear infinite', 
                     },
                     keyframes: {
                         flicker: {
@@ -72,7 +72,6 @@
     </script>
     
     <style>
-        /* CSS CORRIGÉ POUR LE SCROLL */
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
@@ -85,18 +84,68 @@
             cursor: crosshair;
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Empêche le scroll horizontal */
-            overflow-y: auto;   /* Force le scroll vertical */
+            overflow-x: hidden;
+            overflow-y: auto;
             width: 100%;
             position: relative;
         }
+
+        /* --- OSAMASON GLITCH EFFECT --- */
+        .osamason-glitch {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .osamason-glitch::before,
+        .osamason-glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #030303; /* Matches bg color */
+        }
+        
+        .osamason-glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff0000;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-1 3s infinite linear alternate-reverse;
+        }
+        
+        .osamason-glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #0000ff;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(30px, 9999px, 10px, 0); }
+            20% { clip: rect(80px, 9999px, 90px, 0); }
+            40% { clip: rect(10px, 9999px, 50px, 0); }
+            60% { clip: rect(40px, 9999px, 20px, 0); }
+            80% { clip: rect(90px, 9999px, 60px, 0); }
+            100% { clip: rect(20px, 9999px, 70px, 0); }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(10px, 9999px, 80px, 0); }
+            20% { clip: rect(50px, 9999px, 20px, 0); }
+            40% { clip: rect(80px, 9999px, 10px, 0); }
+            60% { clip: rect(30px, 9999px, 90px, 0); }
+            80% { clip: rect(60px, 9999px, 40px, 0); }
+            100% { clip: rect(20px, 9999px, 30px, 0); }
+        }
+        /* ----------------------------- */
 
         /* CRT Scanline Effect */
         .scanlines {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%; /* Important: % pas vw */
+            width: 100%;
             height: 100vh;
             background: linear-gradient(
                 to bottom,
@@ -106,7 +155,7 @@
                 rgba(0,0,0,0.2)
             );
             background-size: 100% 4px;
-            pointer-events: none; /* LAISSE PASSER LE CLIC */
+            pointer-events: none;
             z-index: 55;
             opacity: 0.6;
         }
@@ -116,9 +165,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%; /* Important: % pas vw */
+            width: 100%;
             height: 100vh;
-            pointer-events: none; /* LAISSE PASSER LE CLIC */
+            pointer-events: none;
             z-index: 50;
             opacity: 0.15;
             background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="1"/%3E%3C/svg%3E');
@@ -206,7 +255,9 @@
                 DOSSIER DE PRESSE OFFICIEL
             </div>
             
-            <h1 class="text-[15vw] md:text-[16vw] font-metal leading-[0.8] tracking-widest text-white mix-blend-difference hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-red-500 hover:via-purple-500 hover:to-blue-500 hover:animate-psycho transition-all duration-100 select-none cursor-default scale-y-125 my-8" style="text-shadow: 0 0 10px rgba(255,0,0,0.5);">
+            <h1 class="osamason-glitch text-[15vw] md:text-[16vw] font-metal leading-[0.8] tracking-widest text-white mix-blend-difference select-none cursor-default scale-y-125 my-8" 
+                data-text="COSMOH"
+                style="text-shadow: 0 0 10px rgba(255,0,0,0.5);">
                 COSMOH
             </h1>
 
@@ -305,7 +356,7 @@
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
                 
                 <a href="https://distrokid.com/hyperfollow/cosmoh/c-society-2" target="_blank" class="col-span-1 md:col-span-8 bg-[#0a0a0a] border border-gray-800 p-8 relative group overflow-hidden hover:border-opium-red transition-colors block cursor-pointer">
-                    <div class="absolute top-0 right-0 bg-opium-red text-black font-mono text-xs px-3 py-1 font-bold z-20">PROJECT</div>
+                    <div class="absolute top-0 right-0 bg-opium-red text-black font-mono text-xs px-3 py-1 font-bold z-20">PROJET</div>
                     <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
                         <div class="w-64 h-64 rounded-full bg-gray-800 border-2 border-white/20 group-hover:border-opium-red transition-colors flex items-center justify-center shadow-2xl relative overflow-hidden">
                              <div class="absolute inset-0 bg-gradient-to-tr from-red-500/20 to-blue-500/20 animate-psycho opacity-0 group-hover:opacity-100 transition-opacity z-20 rounded-full"></div>
@@ -520,7 +571,7 @@
             </div>
             
             <div class="mt-20 pt-8 border-t border-white/10 flex justify-between items-end font-mono text-xs font-bold opacity-50">
-                <p>2025 © COSMOH</p>
+                <p>2026 © COSMOH</p>
                 <p class="animate-pulse text-red-500">DESIGNED FOR DESTRUCTION</p>
             </div>
         </div>
